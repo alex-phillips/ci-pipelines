@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  vars_files: vars
+  tasks:
+    - name: create pipeline files
+      template:
+        src: docker-pipeline.yml.j2
+        dest: pipelines/{{ item.name }}.yml
+      with_items: "{{ projects }}"

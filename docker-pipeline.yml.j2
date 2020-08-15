@@ -1,0 +1,28 @@
+---
+resources:
+- name: git-clone
+  type: git
+  source:
+    uri: {{ item.url }}
+    branch: {{ item.branch | default('master') }}
+    private_key: |
+      {{ ssh_key }}
+
+
+- name: dockerhub
+  type: docker-image
+  source:
+    username: {{ docker_username }}
+    password: {{ docker_password }}
+    repository: {{ docker_username }}/{{ item.name }}
+    tag: {{ item.tag | default('latest') }}
+
+jobs:
+- name: publish
+  public: true
+  serial: true
+  plan:
+  - get: git-clone
+  - put: dockerhub
+    params:
+      build: git-clone

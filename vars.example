@@ -1,0 +1,8 @@
+---
+docker_username: username
+docker_password: password
+projects:
+    - name: git-repo-1
+      url: https://github.com/myname/git-repo-1
+ssh_key: |
+    KEY_HERE
