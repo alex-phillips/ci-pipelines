@@ -6,8 +6,7 @@ resources:
     uri: {{ item.url }}
     branch: {{ item.branch | default('master') }}
     private_key: |
-      {{ ssh_key }}
-
+      {{ ssh_key | indent(width=6, indentfirst=False) | default('') }}
 
 - name: dockerhub
   type: docker-image
