@@ -1,9 +1,11 @@
 ---
 - hosts: localhost
   vars_files: vars
+  gather_facts: False
   tasks:
     - name: create pipeline files
       template:
         src: docker-pipeline.yml.j2
         dest: pipelines/{{ item.name }}.yml
+        mode: 0644
       with_items: "{{ projects }}"
