@@ -2,7 +2,11 @@
 docker_username: username
 docker_password: password
 projects:
-    - name: git-repo-1
-      url: https://github.com/myname/git-repo-1
+  - name: my_repo
+    url: https://github.com/example/my_repo
+    branch: master
+    tag: latest
 ssh_key: |
-    KEY_HERE
+  -----BEGIN RSA PRIVATE KEY-----
+  MY_KEY_CONTENTS
+  -----END RSA PRIVATE KEY-----
